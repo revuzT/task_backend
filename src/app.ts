@@ -8,11 +8,20 @@ import express, {
 } from "express";
 import authRouter from "./routes/auth.routes";
 import { authenticate } from "./middleware.ts/auth.middleware";
+import cors from "cors";
 import { commonResponse } from "./utils/response";
 import taskRouter from "./routes/task.routes";
 
 dotenv.config();
 const app: Application = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(cookieParser());
 
