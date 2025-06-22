@@ -6,7 +6,6 @@ export const taskSchema = z.object({
     .min(1, "Task name is required"),
 
   description: z.string().optional(),
-
   dueDate: z
     .string({ required_error: "Due date is required" })
     .refine((val) => !isNaN(Date.parse(val)), {
